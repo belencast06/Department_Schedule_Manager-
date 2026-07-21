@@ -4,7 +4,7 @@ const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
 const cors = require('cors'); //cross server stuff 
 
-PORT=8080;
+const PORT = process.env.PORT || 8080;
 
 // connect to db
 let db;

@@ -1,5 +1,6 @@
 import {create} from 'zustand';
 
+const PORT = process.env.PORT || 8080;
 
 //boiler plate 
 const useStore = create((set, getStore) => ({
@@ -15,7 +16,7 @@ const useStore = create((set, getStore) => ({
         try {
             console.log("Retrieving Term Data!");
 
-            const response = await fetch('http://localhost:8080/getTermInfo');
+            const response = await fetch(`http://localhost:${PORT}/getTermInfo`);
             
             if (!response.ok) {
                 throw new Error('Failed to fetch term data');
@@ -47,7 +48,7 @@ const useStore = create((set, getStore) => ({
         if (newCourseName) {
             try {
                 // POST to server to add course
-                const response = await fetch('http://localhost:8080/addCourse', {
+                const response = await fetch(`http://localhost:${PORT}/addCourse`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -77,7 +78,7 @@ const useStore = create((set, getStore) => ({
     // Section management actions
     addSection: async (courseId, instructorId) => {
         try {
-            const response = await fetch('http://localhost:8080/addSection', {
+            const response = await fetch(`http://localhost:${PORT}/addSection`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -111,7 +112,7 @@ const useStore = create((set, getStore) => ({
 
     updateSection: async (sectionId, newInstructorId) => {
         try {
-            const response = await fetch('http://localhost:8080/updateSection', {
+            const response = await fetch(`http://localhost:${PORT}/updateSection`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -146,7 +147,7 @@ const useStore = create((set, getStore) => ({
 
     deleteSection: async (sectionId) => {
         try {
-            const response = await fetch(`http://localhost:8080/deleteSection/${sectionId}`, {
+            const response = await fetch(`http://localhost:${PORT}/deleteSection/${sectionId}`, {
                 method: 'DELETE'
             });
 
