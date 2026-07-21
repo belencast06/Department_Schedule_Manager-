@@ -1,6 +1,7 @@
 import {create} from 'zustand';
 
 const PORT = process.env.PORT || 8080;
+const API_URL = import.meta.env.VITEAPI_URL || 'http://localhost8080';
 
 //boiler plate 
 const useStore = create((set, getStore) => ({
