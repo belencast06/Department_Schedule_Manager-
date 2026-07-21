@@ -17,7 +17,7 @@ const useStore = create((set, getStore) => ({
         try {
             console.log("Retrieving Term Data!");
 
-            const response = await fetch(`http://localhost:${PORT}/getTermInfo`);
+            const response = await fetch(`${API_URL}/getTermInfo`);
             
             if (!response.ok) {
                 throw new Error('Failed to fetch term data');
@@ -49,7 +49,7 @@ const useStore = create((set, getStore) => ({
         if (newCourseName) {
             try {
                 // POST to server to add course
-                const response = await fetch(`http://localhost:${PORT}/addCourse`, {
+                const response = await fetch(`${API_URL}/addCourse`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -79,7 +79,7 @@ const useStore = create((set, getStore) => ({
     // Section management actions
     addSection: async (courseId, instructorId) => {
         try {
-            const response = await fetch(`http://localhost:${PORT}/addSection`, {
+            const response = await fetch(`${API_URL}/addSection`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -113,7 +113,7 @@ const useStore = create((set, getStore) => ({
 
     updateSection: async (sectionId, newInstructorId) => {
         try {
-            const response = await fetch(`http://localhost:${PORT}/updateSection`, {
+            const response = await fetch(`${API_URL}/updateSection`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -148,7 +148,7 @@ const useStore = create((set, getStore) => ({
 
     deleteSection: async (sectionId) => {
         try {
-            const response = await fetch(`http://localhost:${PORT}/deleteSection/${sectionId}`, {
+            const response = await fetch(`${API_URL}/deleteSection/${sectionId}`, {
                 method: 'DELETE'
             });
 
